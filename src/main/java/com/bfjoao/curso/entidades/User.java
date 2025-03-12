@@ -9,14 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_user")
-public class User implements Serializable {
+@Entity // Indica que esta classe é uma entidade JPA (será mapeada para uma tabela no banco de dados).
+@Table(name = "tb_user") // Define o nome da tabela como "tb_user" (evita conflito com palavras reservadas, como "user").
+public class User implements Serializable { // Permite que objetos da classe sejam serializáveis, útil para trafegar dados na rede ou armazená-los em arquivos.
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // Define id como chave primária da tabela.
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // O banco de dados será responsável por gerar automaticamente o ID (usando AUTO_INCREMENT em bancos como MySQL).
 	private Long id;
 	private String name;
 	private String email;
