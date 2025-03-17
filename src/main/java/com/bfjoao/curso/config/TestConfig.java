@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.bfjoao.curso.entidades.Category;
 import com.bfjoao.curso.entidades.Order;
 import com.bfjoao.curso.entidades.User;
 import com.bfjoao.curso.entidades.enums.OrderStatus;
+import com.bfjoao.curso.repositories.CategoryRepository;
 import com.bfjoao.curso.repositories.OrderRepository;
 import com.bfjoao.curso.repositories.UserRepository;
 
@@ -24,8 +26,17 @@ public class TestConfig implements CommandLineRunner { //  permite executar um c
 	@Autowired
 	private OrderRepository orderRepository;
 	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
+		Category cat1 = new Category(null, "Eletrocnics");
+		Category cat2 = new Category(null, "Books");
+		Category cat3 = new Category(null, "Computers");
+		
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456"); 
 		
